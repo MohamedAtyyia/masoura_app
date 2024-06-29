@@ -12,6 +12,7 @@ abstract class GetUserFromLockel {
   static void init() {
     try {
       userModel = _box.get(AppConst.userBox);
+      // print(userModel?.email);
     } on Exception catch (e) {
       print(e.toString());
     }

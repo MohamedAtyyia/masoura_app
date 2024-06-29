@@ -66,6 +66,7 @@ class ShowAlerDialogToLogout extends StatelessWidget {
                   ontap: () async {
                     await MySharedPrefrence.remove(AppConst.token);
                     GetUserFromLockel.remove();
+                    // ignore: use_build_context_synchronously
                     Navigator.of(context).pushNamedAndRemoveUntil(
                         AppRouterName.loginScreen, (route) => false);
                   },

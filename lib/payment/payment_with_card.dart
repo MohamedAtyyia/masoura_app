@@ -1,3 +1,4 @@
+import 'package:certivicate/core/router/app_router_name.dart';
 import 'package:certivicate/core/style/app_color.dart';
 import 'package:certivicate/core/style/text_style.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,10 @@ class _PaymentWithCardState extends State<PaymentWithCard> {
           onPageFinished: (String url) {},
           onWebResourceError: (WebResourceError error) {},
           onNavigationRequest: (NavigationRequest request) {
-            if (request.url.startsWith(widget.url)) {
+            if (request.url.startsWith(
+                'https://provider.visooft-code.com/public/docs/#tag/notification'
+                //widget.url
+                )) {
               return NavigationDecision.prevent;
             }
             return NavigationDecision.navigate;
@@ -42,17 +46,24 @@ class _PaymentWithCardState extends State<PaymentWithCard> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: AppColor.kPeimeryColor,
-        title: Text(
-          'Payment With Crd',
-          style: Style.textStyle16,
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (value) {
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil(AppRouterName.homepage, (route) => false);
+      },
+      child: SafeArea(
+          child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: AppColor.kPeimeryColor,
+          title: Text(
+            'Payment With Crd',
+            style: Style.textStyle16,
+          ),
         ),
-      ),
-      body: WebViewWidget(controller: controller),
-    ));
+        body: WebViewWidget(controller: controller),
+      )),
+    );
   }
 }

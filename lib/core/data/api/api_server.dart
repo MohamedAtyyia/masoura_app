@@ -18,8 +18,8 @@ class ApiService {
     Map<String, dynamic>? data,
     Map<String, dynamic>? queryParameters,
   }) async {
-    // dio.interceptors.add(
-    // LogInterceptor(error: true, requestBody: true, responseBody: true));
+    dio.interceptors.add(
+        LogInterceptor(error: true, requestBody: true, responseBody: true));
     var response = await dio.post(
       endpoint,
       data: FormData.fromMap(data!),

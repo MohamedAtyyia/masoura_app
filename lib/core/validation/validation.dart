@@ -1,21 +1,20 @@
-
 class ValidationForm {
   static String? userNameValidator(String? value) {
-    if (value?.isEmpty??true) {
+    if (value?.isEmpty ?? true) {
       return 'Please Enter your name';
     }
     return null;
-  } 
-  
-  static String? nationalId(String? value) {
-    if (value?.isEmpty??true) {
-      return 'Please Enter your ID';
-    }else if (value!.length != 13){
-      return 'ID is Failuer';
+  }
 
+  static String? nationalId(String? value) {
+    if (value?.isEmpty ?? true) {
+      return 'Please Enter your ID';
+    } else if (value!.length != 14) {
+      return 'ID is Failuer';
     }
     return null;
   }
+
   static String? phoneValidator(String? value) {
     //validation for egypt phone
     bool isValid =
@@ -48,9 +47,4 @@ class ValidationForm {
       return null;
     }
   }
-
- 
-
-
- 
 }
